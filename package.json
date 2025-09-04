@@ -1,0 +1,24 @@
+{
+  "name": "smart-cv-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongodb": "^6.19.0",
+    "mongoose": "^8.18.0",
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.10",
+    "openai": "^5.19.1",
+    "pdf-parse": "^1.1.1"
+  }
+}

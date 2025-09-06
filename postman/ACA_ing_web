@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "515b808a-5120-47bb-a2f0-8b63f729b7fc",
+		"name": "ACA_ing_web",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32908692"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Carlos\",\r\n  \"apellido\": \"Ramírez\",\r\n  \"documento\": \"987654321\",\r\n  \"contacto\": {\r\n    \"correo\": \"carlos.ramirez@example.com\",\r\n    \"telefono\": \"3129876543\",\r\n    \"direccion\": \"Carrera 10 #23-56, Bogotá\"\r\n  },\r\n  \"experiencia\": {\r\n    \"empresa\": \"Tech Solutions\",\r\n    \"cargo\": \"Desarrollador Fullstack\",\r\n    \"inicio\": \"2021-05-15\",\r\n    \"fin\": \"2023-08-30\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/save-cv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"save-cv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/get-cvs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"get-cvs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

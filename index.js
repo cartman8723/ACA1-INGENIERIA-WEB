@@ -1,4 +1,4 @@
-
+/* 
 const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
@@ -6,6 +6,9 @@ const fs = require("fs");
 
 const app = express();
 const PORT = 4000;
+
+// Conexión a la base de datos
+const CVs = require("./config/conectDB.js");
 
 // Middlewares
 app.use(cors());
@@ -41,6 +44,35 @@ app.post("/api/upload", upload.single("cv"), (req, res) => {
   console.log("📄 Archivo recibido:", req.file);
 
   res.json({ message: "Archivo recibido correctamente", file: req.file });
+});
+
+
+// Iniciar servidor
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+});
+ */
+
+
+
+const express = require("express");
+const cors = require("cors");
+
+// Crear app
+const app = express();
+const PORT = 4000;
+
+// Middlewares globales
+app.use(cors());
+app.use(express.json());
+
+// Importar rutas
+const cvRoutes = require("./routes/CV.routes");
+app.use("/api", cvRoutes);
+
+// Ruta de prueba
+app.get("/", (req, res) => {
+  res.send("✅ Backend SmartCV corriendo...");
 });
 
 // Iniciar servidor

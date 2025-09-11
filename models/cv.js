@@ -1,14 +1,25 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-const CVSchema = new mongoose.Schema({
-  email: String,
-  datos_personales: Object,
-  residencia: Object,
-  educacion: Array,
-  experiencia_laboral: Array,
-  habilidades: Array,
-  archivo: String,
-  fecha_registro: { type: Date, default: Date.now }
-});
+const cvSchema = new mongoose.Schema(
+  {
+    first_name: { type: String, required: false },
+    last_name: { type: String, required: false },
+    contact: {
+      email: { type: String },
+      phone: { type: String },
+      address: { type: String },
+    },
+    experience: [
+      {
+        company: { type: String },
+        role: { type: String },
+        start: { type: String },
+        end: { type: String },
+      },
+    ],
+    skills: [String],
+  },
+  { timestamps: true } // crea createdAt y updatedAt automáticamente
+);
 
-export default mongoose.model("CV", CVSchema);
+module.exports = mongoose.model("CV", cvSchema);

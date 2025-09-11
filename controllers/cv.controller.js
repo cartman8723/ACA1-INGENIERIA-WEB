@@ -89,11 +89,14 @@ const uploadCV = async (req, res) => {
 
 const listCVs = async (_req, res) => {
   try {
-    const cvs = await CV.find().sort({ createdAt: -1 });
+    const cvs = await CV.find({}, "first_name last_name contact.email contact.phone createdAt")
+      .sort({ createdAt: -1 });
+
     res.json(cvs);
   } catch {
-    res.status(500).json({ error: "Error obteniendo los CVs" });
+    res.status(500).json({ error: "Error obteniendo los clientes" });
   }
 };
+
 
 module.exports = { uploadCV, listCVs };

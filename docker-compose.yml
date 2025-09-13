@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:7.0
+    container_name: smartcv_mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: smartcv
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./smart-cv-backend
+    container_name: smartcv_backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      MONGO_URI: mongodb://root:rootpassword@mongo:27017/smartcv?authSource=admin
+    depends_on:
+      - mongo
+    volumes:
+      - ./smart-cv-backend:/app
+      - /app/node_modules
+    command: npm run dev
+
+  frontend:
+    build: ./smart-cv-frontend
+    container_name: smartcv_frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./smart-cv-frontend:/app
+      - /app/node_modules
+    command: npm start
+
+volumes:
+  mongo_data:
